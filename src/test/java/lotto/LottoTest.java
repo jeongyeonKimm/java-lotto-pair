@@ -2,6 +2,8 @@ package lotto;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import java.util.List;
 
@@ -34,4 +36,5 @@ class LottoTest {
         Lotto lotto = new Lotto();
         assertThat(lotto.getPrice()).isEqualTo(1000);
     }
+
 }
