@@ -3,6 +3,8 @@ package lotto;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Lotto {
 
@@ -13,8 +15,11 @@ public class Lotto {
     private final int price;
 
     public Lotto() {
-        for (int i = 1; i <= 45; i++) numList.add(i);
+        IntStream.rangeClosed(1, 45)
+                .forEach(i -> numList.add(i));
+
         Collections.shuffle(numList);
+
         selectedNumbers = numList.subList(START_NUMBER, END_NUMBER);
         this.price = 1000;
     }
@@ -25,5 +30,13 @@ public class Lotto {
 
     public int getPrice() {
         return price;
+    }
+
+    public String getLottoNumbers() {
+        Collections.sort(selectedNumbers);
+        String numbers = selectedNumbers.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining(", "));
+        return "[" + numbers + "]";
     }
 }
