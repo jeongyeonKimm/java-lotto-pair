@@ -8,8 +8,8 @@ import java.util.stream.IntStream;
 
 public class Lotto {
 
-    public static final int START_NUMBER = 0;
-    public static final int END_NUMBER = 6;
+    private static final int START_NUMBER = 0;
+    private static final int END_NUMBER = 6;
     private List<Integer> numList = new ArrayList<>();
     private List<Integer> selectedNumbers;
     private final int price;
@@ -21,6 +21,7 @@ public class Lotto {
         Collections.shuffle(numList);
 
         selectedNumbers = numList.subList(START_NUMBER, END_NUMBER);
+        Collections.sort(selectedNumbers);
         this.price = 1000;
     }
 
@@ -33,7 +34,6 @@ public class Lotto {
     }
 
     public String getLottoNumbers() {
-        Collections.sort(selectedNumbers);
         String numbers = selectedNumbers.stream()
                 .map(String::valueOf)
                 .collect(Collectors.joining(", "));
